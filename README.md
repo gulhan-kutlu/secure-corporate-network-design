@@ -1,7 +1,7 @@
 # secure-corporate-network-design
 
 ###  Secure Corporate Network Architecture Design
-This repository presents a **security-focused enterprise network architecture**
+> This repository presents a **security-focused enterprise network architecture**
 designed for a mid-size corporate environment.
 
 > The project demonstrates a **defense-in-depth approach**, incorporating perimeter
