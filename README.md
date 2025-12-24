@@ -1,116 +1,124 @@
 # secure-corporate-network-design
 
-# Secure Corporate Network Architecture Design
+## Secure Corporate Network Architecture Design
+This repository presents a **security-focused enterprise network architecture**
+designed for a mid-size corporate environment.
 
-This repository presents a **security-focused network architecture design** for a mid-size corporate environment.
-
-The design demonstrates a **defense-in-depth approach**, incorporating perimeter security, DMZ segmentation, internal VLAN isolation, identity-based access control, endpoint protection, intrusion detection, and continuous vulnerability scanning.
-
-###  Overview
-
-The architecture is structured around industry best practices and widely accepted security frameworks, including:
-- NIST SP 800-41 (Firewalls and Firewall Policy)
-- NIST SP 800-94 (Intrusion Detection and Prevention Systems)
-- NIST SP 800-115 (Security Testing and Assessment)
-- Cisco SAFE Secure Edge and DMZ design principles
-- Microsoft Defender for Endpoint architecture guidance
-
-The solution balances **security, usability, and operational practicality**, reflecting real-world enterprise constraints.
-
-###  Key Design Elements
-
-- Edge router and next-generation firewall (NGFW)
-- DMZ with public-facing services (VPN, Web, SFTP)
-- Internal segmentation with departmental VLANs
-- Identity and authentication using Active Directory
-- Endpoint protection and EDR
-- IDS sensors in both DMZ and internal network
-- Daily authenticated vulnerability scanning
-- Strict VPN and inter-VLAN access controls
-
-###  Network Diagrams
-
-- Initial high-level topology
-- Final policy-driven architecture with device placement and IP segmentation
+The project demonstrates a **defense-in-depth approach**, incorporating perimeter
+security, DMZ segmentation, internal VLAN isolation, identity-based access control,
+intrusion detection, and continuous vulnerability scanning.
 
 
-###  Notes
+- This is a **network security architecture case study**, not a software development project.
 
-This project was developed in an academic context but is presented here as a **professional network security design case study** aligned with enterprise best practices.
+
+### Design Frameworks & References
+The architecture aligns with industry best practices and established frameworks:
+
+- NIST SP 800-41 – Firewalls and Firewall Policy
+- NIST SP 800-94 – Intrusion Detection and Prevention Systems
+- NIST SP 800-115 – Security Testing and Assessment
+- Cisco SAFE Secure Edge & DMZ Design
+- Microsoft Defender for Endpoint Architecture Guidance
 
 
 
+### Architecture Overview
+The design evolves from a high-level logical topology into a **policy-driven,
+enterprise-grade architecture** defining:
+
+- Device roles and placement
+- Network segmentation and IP ranges
+- Security boundaries and traffic flows
+- Monitoring and vulnerability management
+
+
+### Network Flow Overview
+Inbound traffic follows a controlled inspection path:
+
+Internet → Edge Router → NGFW → DMZ / Internal Network
+
+
+### Figure 1. Initial Network Diagram
+<img width="329" height="232" alt="image" src="https://github.com/user-attachments/assets/461e97ee-6909-4521-9d54-12a7c722e444" />
+
+
+# Security controls are enforced at each layer to minimize attack surface and lateral movement.
+
+
+### DMZ Architecture
+
+The DMZ hosts all public-facing services:
+
+- Remote Access VPN Gateway
+- Web Server (Nginx)
+- Secure FTP / SFTP Service
+- IDS Sensor
+
+Key design principles:
+- No direct access from VPN to internal VLANs
+- North–south traffic monitored via IDS
+- Strict port exposure and NAT controls
+
+
+
+### Figure 2. Final Network Diagram
+
+<img width="468" height="124" alt="image" src="https://github.com/user-attachments/assets/1519f5f0-a6a1-4faf-9553-b505952a2a16" />
 
 
 
 
-### Initial Network Architecture (High-Level Design)
 
-### Figure 1 presents the initial high-level network architecture for a secure mid-size corporate environment.
+## Internal Network Segmentation
 
-### This diagram focuses on the core structural components required for a secure enterprise network, including:
+Internal routing and switching provide Layer-3 connectivity to departmental VLANs:
 
-Edge router and perimeter firewall
+- Engineering: `10.0.10.0/24`
+- Finance: `10.0.20.0/24`
+- IT: `10.0.100.0/24`
 
-Demilitarized Zone (DMZ)
-
-Internal routing and switching
-
-Authentication and identity services
-
-Endpoint protection and vulnerability scanning
-
-Segmented user VLANs
-
-The design intentionally avoids low-level configuration details and instead emphasizes logical segmentation and traffic flow, following common best practices outlined in NIST SP 800-41 and NIST SP 800-94, as well as Cisco SAFE secure edge and DMZ patterns.
+Security controls include:
+- Inter-VLAN ACLs blocking Engineering ↔ Finance traffic
+- Segmentation firewall enforcing east–west traffic policies
+- Least-privilege access enforcement
 
 
 
+### Management, Monitoring & Security
 
-### Traffic Flow Overview
+A dedicated management and security subnet hosts:
 
-### Inbound traffic follows a controlled inspection path:
+- Active Directory (LDAPS)
+- Microsoft Defender for Endpoint
+- Proxy Services
+- Nessus / OpenVAS Vulnerability Scanner
 
-Internet → Edge Router → Edge Firewall → DMZ / Internal Network
-
-### DMZ Design Rationale
-
-The DMZ hosts services that must be reachable from external networks, including:
-
-VPN gateway
-
-Web server
-
-FTP/SFTP service
-
-Web proxy
-
-An IDS sensor monitors north–south traffic entering and leaving the DMZ, providing early detection of malicious activity before traffic reaches internal segments.
+Credentialed vulnerability scans run daily, collecting telemetry from:
+- Endpoints
+- IDS sensors
+- Network devices
 
 
-Internal Network Segmentation
 
-Behind the perimeter, internal routing and switching provide Layer-3 connectivity to multiple departmental VLANs, including:
-
-Engineering (10.0.10.0/24)
-
-Finance (10.0.20.0/24)
-
-IT (10.0.100.0/24)
-
-Separating departments into distinct subnets establishes the foundation for:
-
-Fine-grained access control
-
-Reduced lateral movement
-
-Clear enforcement of least-privilege principles
-
-A dedicated management and security subnet hosts identity services, endpoint protection management, and vulnerability scanning tools. This subnet can securely reach all VLANs for monitoring and authentication without being exposed to standard user traffic.
+### Key Security Objectives Achieved
+- DMZ and internal network separation
+- Restricted VPN access boundaries
+- Departmental isolation
+- Continuous vulnerability scanning
+- Centralized monitoring and visibility
 
 
-Design Intent
+### Notes
+- This project was developed in an academic environment and is presented as a
+  **professional enterprise network security design case study**
+- No proprietary configurations, credentials, or production systems are included
+- The focus is on **architecture, security design, and system reasoning**, not implementation scripts
 
-The purpose of this initial architecture is not to define every access control list or firewall rule, but to present a clean, logically segmented topology that satisfies core security requirements and aligns with accepted enterprise design standards.
 
-This structure serves as the baseline for more detailed, policy-driven controls implemented in the final architecture, including VPN restrictions, departmental isolation, and continuous vulnerability scanning.
+### Disclaimer
+This repository is shared for **educational and portfolio purposes only** and does
+not expose confidential or operational enterprise infrastructure.
+
+
+
