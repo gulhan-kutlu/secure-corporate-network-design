@@ -1,19 +1,19 @@
 # secure-corporate-network-design
 
-## Secure Corporate Network Architecture Design
+###  Secure Corporate Network Architecture Design
 This repository presents a **security-focused enterprise network architecture**
 designed for a mid-size corporate environment.
 
-The project demonstrates a **defense-in-depth approach**, incorporating perimeter
+> The project demonstrates a **defense-in-depth approach**, incorporating perimeter
 security, DMZ segmentation, internal VLAN isolation, identity-based access control,
 intrusion detection, and continuous vulnerability scanning.
 
 
-- This is a **network security architecture case study**, not a software development project.
+> This is a **network security architecture case study**, not a software development project.
 
 
 ### Design Frameworks & References
-The architecture aligns with industry best practices and established frameworks:
+> The architecture aligns with industry best practices and established frameworks:
 
 - NIST SP 800-41 – Firewalls and Firewall Policy
 - NIST SP 800-94 – Intrusion Detection and Prevention Systems
@@ -24,7 +24,7 @@ The architecture aligns with industry best practices and established frameworks:
 
 
 ### Architecture Overview
-The design evolves from a high-level logical topology into a **policy-driven,
+> The design evolves from a high-level logical topology into a **policy-driven,
 enterprise-grade architecture** defining:
 
 - Device roles and placement
@@ -43,11 +43,10 @@ Internet → Edge Router → NGFW → DMZ / Internal Network
 <img width="329" height="232" alt="image" src="https://github.com/user-attachments/assets/461e97ee-6909-4521-9d54-12a7c722e444" />
 
 
-# Security controls are enforced at each layer to minimize attack surface and lateral movement.
+> Security controls are enforced at each layer to minimize attack surface and lateral movement.
 
 
 ### DMZ Architecture
-
 The DMZ hosts all public-facing services:
 
 - Remote Access VPN Gateway
@@ -63,7 +62,6 @@ Key design principles:
 
 
 ### Figure 2. Final Network Diagram
-
 <img width="468" height="124" alt="image" src="https://github.com/user-attachments/assets/1519f5f0-a6a1-4faf-9553-b505952a2a16" />
 
 
@@ -71,7 +69,6 @@ Key design principles:
 
 
 ## Internal Network Segmentation
-
 Internal routing and switching provide Layer-3 connectivity to departmental VLANs:
 
 - Engineering: `10.0.10.0/24`
@@ -86,7 +83,6 @@ Security controls include:
 
 
 ### Management, Monitoring & Security
-
 A dedicated management and security subnet hosts:
 
 - Active Directory (LDAPS)
@@ -117,8 +113,8 @@ Credentialed vulnerability scans run daily, collecting telemetry from:
 
 
 ### Disclaimer
-This repository is shared for **educational and portfolio purposes only** and does
-not expose confidential or operational enterprise infrastructure.
+> This repository is shared for **educational and portfolio purposes only** and does
+> not expose confidential or operational enterprise infrastructure.
 
 
 
